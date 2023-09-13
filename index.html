@@ -9,15 +9,18 @@
   <body>
     <div id="app">
       <h1>To Do List</h1>
-      <input type="text" @keyup.enter="addText" v-model="newText" />
-      <button @click="addText"></button>
+      <input type="text" v-model="newText" />
+      <button @click="addText">Aggiungi</button>
+      <div>
+        <div>
+          <ul>
+            <li v-for="text in textList" :key="text.done">{{text.list}}</li>
+          </ul>
+          <!--  <p >Non ci sono elementi</p> -->
+        </div>
+      </div>
     </div>
-    <div>
-      <ul v-if="textList.lenght > 0">
-        <li v-for="text in textList">{{text}}</li>
-      </ul>
-      <p v-else>Non ci sono elementi</p>
-    </div>
+
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./asset/js/script.js"></script>
   </body>

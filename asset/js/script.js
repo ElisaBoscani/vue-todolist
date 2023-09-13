@@ -8,9 +8,11 @@ createApp({
   },
   methods: {
     addText() {
-      this.textList.push(this.newText);
-      console.log(this.newText);
-      console.log(this.textList);
+      if (this.newText != "") {
+        this.textList.push({ done: true, list: this.newText });
+        console.log(this.newText);
+      }
+      this.newText = "";
     },
   },
 }).mount("#app");
