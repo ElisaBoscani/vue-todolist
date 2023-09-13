@@ -11,29 +11,48 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+
     <link rel="stylesheet" href="./asset/css/style.css" />
   </head>
   <body>
     <div id="app">
-      <h1>To Do List</h1>
-      <input type="text" @keydown.enter="addText" v-model="newText" />
-      <button @click="addText">Aggiungi</button>
+      <h1 class="text-center fst-italic text-info mt-2">To Do List</h1>
+      <div class="d-flex justify-content-center gap-5 mt-5 container">
+        <input
+          type="text"
+          @keydown.enter="addText"
+          v-model="newText"
+          class="border-info width_input"
+        />
+        <button @click="addText" class="btn btn-light btn-outline-info">
+          Aggiungi
+        </button>
+      </div>
       <div>
-        <div>
-          <ul>
-            <li
-              v-for="(text, index) in textList"
-              :key="text.done"
-              :class="{'text_line':text.done}"
-              @click="checkText(text)"
-            >
-              {{text.list}}
-              <i
-                @click="removeText(index)"
-                class="fa-solid fa-trash fa-lg"
-                style="color: #000000"
-              ></i>
-            </li>
+        <div class="d-flex justify-content-center flex-column mt-5">
+          <ul class="d-flex justify-content-center">
+            <div>
+              <li
+                v-for="(text, index) in textList"
+                :key="text.done"
+                :class="{'text_line':text.done}"
+                @click="checkText(text)"
+                class="fs-4"
+              >
+                {{text.list}}
+                <i
+                  class="fa-solid fa-trash fa-lg ps-5"
+                  @click="removeText(index)"
+                  style="color: #000000"
+                ></i>
+              </li>
+            </div>
           </ul>
           <!--  <p >Non ci sono elementi</p> -->
         </div>
